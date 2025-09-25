@@ -15,6 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Custom nature-themed variants
+        nature: "bg-forest text-white hover:bg-forest-light shadow-nature transition-bounce",
+        golden: "bg-golden text-forest hover:bg-golden/90 shadow-nature transition-bounce",
+        hero: "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm transition-bounce",
       },
       size: {
         default: "h-10 px-4 py-2",

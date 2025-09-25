@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +51,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Custom nature-themed colors
+        forest: {
+          DEFAULT: "hsl(var(--forest-primary))",
+          light: "hsl(var(--forest-light))",
+          dark: "hsl(var(--forest-dark))",
+        },
+        earth: {
+          DEFAULT: "hsl(var(--earth-warm))",
+          light: "hsl(var(--earth-light))",
+        },
+        sky: "hsl(var(--sky-blue))",
+        golden: "hsl(var(--golden-accent))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
