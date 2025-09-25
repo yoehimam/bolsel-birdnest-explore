@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
 import { useToast } from "@/hooks/use-toast";
-import { Camera, FileText, Upload, Save, Eye, Trash2, Edit } from "lucide-react";
+import { Camera, FileText, Upload, Save, Eye, Trash2, Edit, LogOut } from "lucide-react";
 
 interface Photo {
   id: string;
@@ -30,6 +31,24 @@ interface Article {
 
 export default function Dashboard() {
   const { toast } = useToast();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const isAdmin = localStorage.getItem("isAdmin");
+    if (!isAdmin) {
+      navigate("/admin");
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    toast({
+      title: "Logout berhasil",
+      description: "Anda telah keluar dari dashboard.",
+    });
+    navigate("/admin");
+  };
   
   // Photo management state
   const [photos, setPhotos] = useState<Photo[]>([
@@ -153,13 +172,23 @@ export default function Dashboard() {
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-display font-bold text-foreground">
-            Dashboard Admin
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Kelola konten foto dan artikel untuk website Birdnest Bolsel
-          </p>
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-display font-bold text-foreground">
+              Dashboard Admin
+            </h1>
+            <p className="text-muted-foreground mt-2">
+              Kelola konten foto dan artikel untuk website Birdnest Bolsel
+            </p>
+          </div>
+          <Button 
+            variant="outline" 
+            onClick={handleLogout}
+            className="border-destructive text-destructive hover:bg-destructive hover:text-white"
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Logout
+          </Button>
         </div>
 
         <Tabs defaultValue="photos" className="space-y-6">

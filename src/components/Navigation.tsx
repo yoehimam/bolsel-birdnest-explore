@@ -58,14 +58,6 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Dashboard Button */}
-          <div className="hidden md:block">
-            <Link to="/dashboard">
-              <Button variant="outline" className="border-forest text-forest hover:bg-forest hover:text-white">
-                Dashboard
-              </Button>
-            </Link>
-          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -107,13 +99,6 @@ export function Navigation() {
                 </Link>
               );
             })}
-            <Link
-              to="/dashboard"
-              className="block px-3 py-2 rounded-md text-base font-medium text-forest hover:bg-forest/10 transition-smooth"
-              onClick={() => setIsOpen(false)}
-            >
-              Dashboard
-            </Link>
           </div>
         </div>
       )}
